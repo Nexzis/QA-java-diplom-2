@@ -1,6 +1,7 @@
 package praktikum.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.qameta.allure.Step;
 import praktikum.EnvConfig;
 
 import java.net.HttpURLConnection;
@@ -26,6 +27,7 @@ public class Ingredients {
     }
 
     // Метод для получения объектов Ingredients
+    @Step("Получение объектов Ingredients")
     public static List<Ingredients> getAllIngredientObjects() {
         IngredientsResponse response = EnvConfig.getSpec()
                 .when()
@@ -39,6 +41,7 @@ public class Ingredients {
     }
 
     // Метод для получения ингредиентов по индексам
+    @Step("Получение ингредиентов по индексам")
     public static List<String> getIngredientIdsByIndexes(List<Ingredients> ingredients, Integer... indexes) {
         return List.of(indexes).stream()
                 .map(ingredients::get)
