@@ -1,6 +1,7 @@
-package praktikum.Data;
+package praktikum.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.qameta.allure.Step;
 import praktikum.EnvConfig;
 
@@ -10,12 +11,13 @@ import java.util.stream.Collectors;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ingredients {
-    private String _id;
+    @JsonProperty("_id")
+    private String id;
     private String name;
     private String type;
 
-    public String get_id() {
-        return _id;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -45,7 +47,7 @@ public class Ingredients {
     public static List<String> getIngredientIdsByIndexes(List<Ingredients> ingredients, Integer... indexes) {
         return List.of(indexes).stream()
                 .map(ingredients::get)
-                .map(Ingredients::get_id)
+                .map(Ingredients::getId)
                 .collect(Collectors.toList());
     }
 

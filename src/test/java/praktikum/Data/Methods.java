@@ -1,4 +1,4 @@
-package praktikum.Data;
+package praktikum.data;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -46,11 +46,10 @@ public class Methods {
 
     @Step("Логин пользователя")
     public static Response loginUser(User uniqueUser) {
+        LoginModel loginModel = new LoginModel(uniqueUser.getEmail(), uniqueUser.getPassword());
+
         return EnvConfig.getSpec()
-                .body(Map.of(
-                        "email", uniqueUser.getEmail(),
-                        "password", uniqueUser.getPassword()
-                ))
+                .body(loginModel)
                 .when()
                 .post(EnvConfig.API_LOGIN)
                 .then().log().status().log().body()
@@ -66,11 +65,18 @@ public class Methods {
     }
 
     @Step("Удаление пользователя")
-    public static void deleteUser(String accessToken) {
-        EnvConfig.getSpecWithToken(accessToken)
+    public static Response deleteUser(String accessToken) {
+        return EnvConfig.getSpecWithToken(accessToken)
                 .when()
                 .delete(EnvConfig.API_DELETE)
                 .then().log().status().log().body()
+                .extract().response();
+
+    }
+
+    @Step("Проверка успешного удаления пользователя")
+    public static void assertDeleteUserSuccessful(Response response) {
+        response.then()
                 .statusCode(HttpURLConnection.HTTP_ACCEPTED)
                 .body("success", equalTo(true))
                 .body("message", equalTo("User successfully removed"));

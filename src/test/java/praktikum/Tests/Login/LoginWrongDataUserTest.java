@@ -1,4 +1,4 @@
-package praktikum.Tests.Login;
+package praktikum.tests.login;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import praktikum.Data.Methods;
-import praktikum.Data.User;
+import praktikum.data.Methods;
+import praktikum.data.User;
 import java.util.Arrays;
 import java.util.Collection;
 import com.github.javafaker.Faker;

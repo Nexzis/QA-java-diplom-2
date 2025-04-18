@@ -1,4 +1,4 @@
-package praktikum.Tests.Login;
+package praktikum.tests.login;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,8 +6,8 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import praktikum.Data.Methods;
-import praktikum.Data.User;
+import praktikum.data.Methods;
+import praktikum.data.User;
 
 import java.net.HttpURLConnection;
 

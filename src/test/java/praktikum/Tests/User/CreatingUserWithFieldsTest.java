@@ -1,9 +1,9 @@
-package praktikum.Tests.User;
+package praktikum.tests.user;
 
 import io.restassured.response.Response;
 import org.junit.After;
-import praktikum.Data.Methods;
-import praktikum.Data.User;
+import praktikum.data.Methods;
+import praktikum.data.User;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.runner.RunWith;
